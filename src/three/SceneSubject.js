@@ -25,12 +25,12 @@ export default scene => {
 
     group.rotation.z = Math.PI/4;
 
-    const speed = 0.02;
-    const textureOffsetSpeed = 0.02;
+    const speed = 0.2;
+    const textureOffsetSpeed = 0.6;
 
     function deformGeometry(geometry) {
         for (let i=0; i<geometry.vertices.length; i+=2) {
-            const scalar = 1 + Math.random()*0.8;
+            const scalar = 1 + Math.random()*0.4;
             geometry.vertices[i].multiplyScalar(scalar)
         }
 
@@ -42,7 +42,7 @@ export default scene => {
 
         group.rotation.y = angle;
 
-        subjectMaterial.alphaMap.offset.y = 0.55 + time * textureOffsetSpeed;
+        subjectMaterial.alphaMap.offset.y = 0.85 + time * textureOffsetSpeed;
 
         subjectWireframe.material.color.setHSL( Math.sin(angle*2), 0.5, 0.5 );
         
