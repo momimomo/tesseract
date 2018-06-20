@@ -8,7 +8,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LoaderContainer />
+        <div className="Loader">
+          <LoaderContainer />
+        </div>
+        <div className="loader-text">Loading...</div>
       </div>
     );
   }

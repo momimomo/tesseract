@@ -14,17 +14,18 @@ export default canvas => {
 
     const screenDimensions = {
         width: canvas.width,
-        height: canvas.height
+        height: canvas.height,
     };
 
     const renderer = buildRender(screenDimensions);
+    
     function buildRender({ width, height }) {
         const render = new THREE.WebGLRenderer( {canvas: canvas, antialias: true, alpha: true} );
+        const DPR = window.devicePixelRatio ? window.devicePixelRatio : 1;
+        render.setPixelRatio(DPR);
         render.setSize( width, height );
         return render;
     };
-
-    // LoaderContainer.appendChild( renderer.domElement );
 
     var geometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
 
@@ -182,5 +183,7 @@ export default canvas => {
         renderer.render( scene, camera );
     };
 
-    return { update };
+    return {
+      update,
+    };
 }
