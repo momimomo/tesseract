@@ -21,11 +21,11 @@ export default container => {
         canvas.style.width = '100%';
         canvas.style.height= '100%';
         
-        canvas.width  = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+        // canvas.width  = canvas.offsetWidth;
+        // canvas.height = canvas.offsetHeight;
 
-        canvasHalfWidth = Math.round(canvas.offsetWidth/2);
-        canvasHalfHeight = Math.round(canvas.offsetHeight/2);
+        // canvasHalfWidth = Math.round(canvas.offsetWidth/2);
+        // canvasHalfHeight = Math.round(canvas.offsetHeight/2);
     }
 
     function render() {
