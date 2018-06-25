@@ -1,0 +1,22 @@
+{
+    "cameraButtons": [
+      {
+        "id": "1",
+        "title": "X",
+        "position": "-8 1.6 1",
+        "rotation": "0 -90 0"
+      },
+      {
+        "id": "2",
+        "title": "Y",
+        "position": "0 8 -2",
+        "rotation": "-90 0 0"
+      },
+      {
+        "id": "3",
+        "title": "Z",
+        "position": "0 1.6 8",
+        "rotation": "0 0 -90"
+      }
+    ]
+  }
