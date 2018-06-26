@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 // import { Route } from 'react-router';
-import BaseScene from './Scene'
+import BaseScene from './aframe/Scene'
 
 class App extends Component {
   

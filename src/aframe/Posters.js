@@ -1,7 +1,7 @@
 import { Entity } from "aframe-react";
 import React from "react";
 
-import preload from "./data.json";
+import preload from "../data.json";
 
 class Posters extends React.Component {
   render() {
