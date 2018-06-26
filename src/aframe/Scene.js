@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Entity, Scene } from "aframe-react";
 import "aframe";
 import "aframe-animation-component";
+import "aframe-crawling-cursor";
 
 import Camera from "./Camera";
 import Navigation from "./Navigation";
@@ -60,8 +61,9 @@ class BaseScene extends Component {
                                 />
                                 <Entity primitive='a-cursor'/>
                                 <Entity primitive='a-sky'/>
+                                <Entity primitive='a-camera' raycaster crawling-cursor/>
                                 <Posters />
-                                <Camera cameraTarget={this.state.cameraTarget} />
+                                {/* <Camera raycaster crawling-cursor cameraTarget={this.state.cameraTarget} /> */}
                             </Scene>
                         </div>
                     }
