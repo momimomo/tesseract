@@ -3,11 +3,22 @@ import { Entity, Scene } from "aframe-react";
 import "aframe";
 import "aframe-animation-component";
 import "aframe-crawling-cursor";
+import { registerComponent } from 'aframe';
 
 import Camera from "./Camera";
 import Navigation from "./Navigation";
 import Posters from "./Posters";
 import Loader from '../three/Loader';
+
+// var objectSpawner = registerComponent('log', {
+//     schema: {type: 'string'},
+
+//     init: function () {
+//       console.log('ss');
+//     }
+//   });
+
+
 
 class BaseScene extends Component {
     state = {
@@ -21,12 +32,30 @@ class BaseScene extends Component {
         });
     };
 
+    spawnObj() {
+        var el = this.el
+        var sceneEl = document.querySelector('a-scene');
+        var entityEl = document.createElement('a-entity');
+        entityEl.setAttribute('geometry', {
+            primitive: 'box',
+            height: 1,
+            width: 1
+        });
+        entityEl.setAttribute('position', {x: 1, y: 2, z: 1});
+        entityEl.setAttribute('material', 'color', 'red');
+        console.log('el', el)
+        console.log(sceneEl);
+        sceneEl.appendChild(entityEl);
+    }
+
     componentDidMount() {
         setInterval(() => {
         this.setState({
             loading: false
         });
-    }, 3000)
+    }, 1000)
+    var sceneEl = document.querySelector('a-scene');
+    console.log(sceneEl);
     };
     
     render() {
@@ -38,6 +67,7 @@ class BaseScene extends Component {
                 <div>
                     {this.state.loading === false
                         && <div>
+                            {/* <button className="spawn-button" onClick={this.spawnObj()}>SPAWN</button> */}
                             <Navigation buttonHandler={this.setNextCameraTarget} />
                             <Scene shadow={{ type: "basic"}} stats>
                                 <Entity
@@ -61,9 +91,9 @@ class BaseScene extends Component {
                                 />
                                 <Entity primitive='a-cursor'/>
                                 <Entity primitive='a-sky'/>
-                                <Entity primitive='a-camera' raycaster crawling-cursor/>
+                                {/* <Entity primitive='a-camera' raycaster crawling-cursor/> */}
                                 <Posters />
-                                {/* <Camera raycaster crawling-cursor cameraTarget={this.state.cameraTarget} /> */}
+                                <Camera cameraTarget={this.state.cameraTarget} />
                             </Scene>
                         </div>
                     }

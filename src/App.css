@@ -33,3 +33,8 @@
   width: 100%;
   height: 100%;
 }
+
+.spawn-button {
+  height: 20px;
+  width: 60px;
+}
