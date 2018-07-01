@@ -2,7 +2,7 @@ import { registerComponent } from 'aframe';
 import 'react';
 import AFRAME from 'aframe';
 
-const snap = registerComponent('snap', {
+const Snap = registerComponent('snap', {
     dependencies: ['position'],
   
     schema: {
@@ -26,4 +26,4 @@ const snap = registerComponent('snap', {
     }
   });
 
-export default snap;
+export default Snap;

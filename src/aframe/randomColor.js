@@ -1,12 +1,11 @@
 import { registerComponent } from 'aframe';
 import 'react';
 
-const randomColor = registerComponent('random-color', {
+const RandomColor = registerComponent('random-color', {
     dependencies: ['material'],
   
     init: function () {
       this.el.setAttribute('material', 'color', getRandomColor());
-      console.log(this.el);
     }
   });
   
@@ -19,4 +18,4 @@ const randomColor = registerComponent('random-color', {
     return color;
   }
 
-export default randomColor;
+export default RandomColor;
