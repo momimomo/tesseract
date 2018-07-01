@@ -80,7 +80,7 @@ class BaseScene extends Component {
                                     rotation="-90 0 0"
                                 />
 
-                                {/* <Entity primitive='a-cursor'/> */}
+                                <Entity primitive='a-cursor'/>
                                 <Entity primitive='a-sky'/>
                                 <Entity primitive='a-camera' raycaster crawling-cursor object-spawner/>
                                 <Posters />
