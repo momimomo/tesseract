@@ -3,20 +3,15 @@ import { Entity, Scene } from "aframe-react";
 import "aframe";
 import "aframe-animation-component";
 import "aframe-crawling-cursor";
-import { registerComponent } from 'aframe';
 
 import Camera from "./Camera";
 import Navigation from "./Navigation";
 import Posters from "./Posters";
 import Loader from '../three/Loader';
 
-// var objectSpawner = registerComponent('log', {
-//     schema: {type: 'string'},
-
-//     init: function () {
-//       console.log('ss');
-//     }
-//   });
+import ObjectSpawner from './Spawner';
+// import snap from './Snap';
+import randomColor from './randomColor';
 
 
 
@@ -32,30 +27,12 @@ class BaseScene extends Component {
         });
     };
 
-    spawnObj() {
-        var el = this.el
-        var sceneEl = document.querySelector('a-scene');
-        var entityEl = document.createElement('a-entity');
-        entityEl.setAttribute('geometry', {
-            primitive: 'box',
-            height: 1,
-            width: 1
-        });
-        entityEl.setAttribute('position', {x: 1, y: 2, z: 1});
-        entityEl.setAttribute('material', 'color', 'red');
-        console.log('el', el)
-        console.log(sceneEl);
-        sceneEl.appendChild(entityEl);
-    }
-
     componentDidMount() {
         setInterval(() => {
         this.setState({
             loading: false
         });
     }, 1000)
-    var sceneEl = document.querySelector('a-scene');
-    console.log(sceneEl);
     };
     
     render() {
@@ -70,6 +47,14 @@ class BaseScene extends Component {
                             {/* <button className="spawn-button" onClick={this.spawnObj()}>SPAWN</button> */}
                             <Navigation buttonHandler={this.setNextCameraTarget} />
                             <Scene shadow={{ type: "basic"}} stats>
+                                <a-assets>
+                                    <a-mixin
+                                        id="mix"
+                                        random-color
+                                        object-spawner
+                                    />
+                                </a-assets>
+
                                 <Entity
                                     geometry={{
                                       primitive: "plane",
@@ -89,11 +74,21 @@ class BaseScene extends Component {
                                     position={{ x: 0.193, y: 2.601, z: 7.546 }}
                                     rotation="-90 0 0"
                                 />
+                                {/* <Entity
+                                    mixin
+                                    id="voxel"
+                                    material="shader: standard"
+                                    random-color
+                                    snap="offset: 0.25 0.25 0.25; snap: 0.5 0.5 0.5"
+                                /> */}
                                 <Entity primitive='a-cursor'/>
                                 <Entity primitive='a-sky'/>
-                                {/* <Entity primitive='a-camera' raycaster crawling-cursor/> */}
+                                <Entity primitive='a-camera' raycaster crawling-cursor/>
+                                <Entity
+                                    mixin="mix"
+                                />
                                 <Posters />
-                                <Camera cameraTarget={this.state.cameraTarget} />
+                                {/* <Camera cameraTarget={this.state.cameraTarget} /> */}
                             </Scene>
                         </div>
                     }

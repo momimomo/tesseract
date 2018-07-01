@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import '../App.css';
 import * as THREE from 'three';
+import '../App.css';
 
 export default canvas => {
     var scene = new THREE.Scene();
@@ -36,22 +35,22 @@ export default canvas => {
     var groupXyFive = new THREE.Group();
 
     let cube = [];
+    let colorA = 0x0f2344;
 
     function createThreeThreeThreeBlocksMatrix(start) {
       for (let x = 0; x < 5; x++) {
         for (let y = 0; y < 5; y++) {
           for (let z = 0; z < 5; z++) {
-            
             if (z === 0) {
-              var colorA = 0x0f2344;
+                colorA = 0x0f2344;
             } else if (z === 1) {
-              var colorA = 0x195aa8;
+                colorA = 0x195aa8;
             } else if (z === 2) {
-              var colorA = 0x21bced;
+                colorA = 0x21bced;
             } else if (z === 3) {
-              var colorA = 0x195aa8;
+                colorA = 0x195aa8;
             } else if (z === 4) {
-              var colorA = 0x0f2344;
+                colorA = 0x0f2344;
             }
             
             cube['cube'+x+y+z] = 
@@ -133,26 +132,6 @@ export default canvas => {
         } 
     }
 
-    function mergeRotZ (z, offset, angleval) { 
-        for (let k = 0; k < 5; k++) {
-            for (let j = 0; j < 5; j++) {
-          
-                let cubeId = String(k) + String(j) + String(z);
-
-                let cubeX = cube[ 'cube' + cubeId ].position.x;
-                let cubeY = cube[ 'cube' + cubeId ].position.y;
-
-                let angle = angleval * Math.PI / 180
-
-                let newCubeX = cubeX * Math.cos(angle) - (cubeY + offset ) * Math.sin(angle);
-                let newCubeY = cubeY * Math.cos(angle) + (cubeX + offset ) * Math.sin(angle);
-
-                cube[ 'cube' + cubeId ].position.x = newCubeX;
-                cube[ 'cube' + cubeId ].position.y = newCubeY;
-            }
-        } 
-    }
-
     var update = function () {
 
         groupXyOne.rotation.x += 0.02; 
@@ -180,6 +159,7 @@ export default canvas => {
         mergeRotY(4, 0, -1);
         
         mergeRotX(2, 0, 2);
+        
         renderer.render( scene, camera );
     };
 
