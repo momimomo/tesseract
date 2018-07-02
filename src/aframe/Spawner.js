@@ -4,9 +4,9 @@ import 'react';
 
 const ObjectSpawner = registerComponent('object-spawner', {
     init: function () {
-      var sceneElement = document.querySelector('a-cursor');
-      sceneElement.setAttribute("intersection-spawn", "event: click; mixin: mix");
-      console.log('sceneElement :: ', sceneElement);
+      var cursor = document.querySelector('a-cursor');
+      cursor.setAttribute("intersection-spawn", "event: click; mixin: mix");
+      console.log('scene :: ', document.querySelector('a-scene'));
     }
   });
 

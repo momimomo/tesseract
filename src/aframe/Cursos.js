@@ -20,7 +20,6 @@ const crawlingCursor = registerComponent("crawlingsuper-cursor", {
     var el = this.el;
     var data = this.data;
 
-    //pulled this var out of scope of raycaster-intersection
     var cursorPosition;
     var lookAtTarget;
     if (data.target === null) {
@@ -33,11 +32,6 @@ const crawlingCursor = registerComponent("crawlingsuper-cursor", {
       data.target = cursor;
     }
 
-    /* RAYCASTER REFRESH */
-    // var raycaster = document.querySelector("#freeCamera").components.raycaster;
-    // setTimeout(function() {
-    //   raycaster.refreshObjects();
-    // }, 500);
     var raycaster = document.querySelector("#freeCamera").components.raycaster;
     var mainSceneObj = document.querySelector("#mainSceneObj");
     mainSceneObj.addEventListener("model-loaded", () => {
@@ -45,15 +39,12 @@ const crawlingCursor = registerComponent("crawlingsuper-cursor", {
     });
 
     el.addEventListener("raycaster-intersection", function(e) {
-      // setTimeout(function() {
       var intersection = getNearestIntersection(e.detail.intersections);
       if (!intersection) {
         return;
       }
 
-      // a matrix which represents item's movement, rotation and scale on global world
       var mat = intersection.object.matrixWorld;
-      // remove parallel movement from the matrix
       mat.setPosition(new THREE.Vector3(0, 0, 0));
 
       // change local normal into global normal

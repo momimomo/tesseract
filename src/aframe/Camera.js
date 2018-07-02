@@ -28,25 +28,12 @@ class Camera extends React.Component {
         () => this.cameraTargetHandler()
       );
     } else {
-      /* IMPORTANT */
-      // on every component rerender update currentCameraPos to prevent camera
-      // position reset leading to glitches and flickers
       this.setState({
         currentCameraPos: tmpPos,
         currentCameraRot: tmpRot
       });
     }
   }
-
-  // THINK ABOUT THOSE
-  // MAYBE THERE'S TOO MUCH IN componentWillReceiveProps
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (nextProps.cameraTarget === this.props.cameraTarget) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
   componentDidUpdate() {}
 
   cameraTargetHandler = () => {
@@ -63,7 +50,7 @@ class Camera extends React.Component {
       const distanceFromPoster = 2;
       let posX = tmpPoster.getAttribute("position").x;
       let posZ = tmpPoster.getAttribute("position").z;
-      let posY = tmpPoster.getAttribute("position").y; // this one isnt altered
+      let posY = tmpPoster.getAttribute("position").y; 
 
       let rotX = tmpPoster.getAttribute("rotation").x;
       let rotY = tmpPoster.getAttribute("rotation").y;
@@ -79,7 +66,6 @@ class Camera extends React.Component {
       tmpTargetRot = `${rotX} ${rotY} 0`;
     }
 
-    // update state camera target details and trigger animation start
     this.setState(
       { cameraTargetPos: tmpTargetPos, cameraTargetRot: tmpTargetRot },
       () => this.cameraTriggerer()

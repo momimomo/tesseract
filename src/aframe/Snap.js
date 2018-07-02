@@ -18,9 +18,9 @@ const Snap = registerComponent('snap', {
       const data = this.data;
   
       const pos = AFRAME.utils.clone(this.originalPos);
-      pos.x = Math.floor(pos.x / data.snap.x) * data.snap.x + data.offset.x;
-      pos.y = Math.floor(pos.y / data.snap.y) * data.snap.y + data.offset.y;
-      pos.z = Math.floor(pos.z / data.snap.z) * data.snap.z + data.offset.z;
+      pos.x = Math.floor((pos.x + 0.01) / data.snap.x) * data.snap.x + data.offset.x;
+      pos.y = Math.floor((pos.y + 0.01) / data.snap.y) * data.snap.y + data.offset.y;
+      pos.z = Math.floor((pos.z + 0.01) / data.snap.z) * data.snap.z + data.offset.z;
   
       this.el.setAttribute('position', pos);
     }

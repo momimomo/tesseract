@@ -33,7 +33,7 @@ class BaseScene extends Component {
         this.setState({
             loading: false
         });
-    }, 1000)
+    }, 100)
     };
     
     render() {
@@ -53,6 +53,8 @@ class BaseScene extends Component {
                                     <a-mixin
                                         geometry="primitive: box; height: 0.5; width: 0.5; depth: 0.5"
                                         material="shader: standard"
+                                        // response-type="arraybuffer"
+                                        // src="url(../lib/BedrockDino.glb)"
                                         id="mix"
                                         random-color
                                         snap="offset: 0.25 0.25 0.25; snap: 0.5 0.5 0.5"
