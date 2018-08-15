@@ -35,7 +35,7 @@ class BaseScene extends Component {
         });
     }, 100)
     };
-    
+
     render() {
         return (
             <div>
