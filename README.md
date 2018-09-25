@@ -1,4 +1,4 @@
-# This project is a part of webGL training leading to creation of simple web 3D editor.
+This project is a part of webGL training leading to creation of simple web 3D editor.
 
 ## Info
 Used dockerized Create React App @ React 16+
